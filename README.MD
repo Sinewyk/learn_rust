@@ -1,1 +1,3 @@
-test
+stopped just before: 3
+
+just learning rust ...
