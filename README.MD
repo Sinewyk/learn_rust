@@ -1,3 +1,3 @@
-stopped just before: 3.4 comments
+stopped just before: 5 structs
 
 just learning rust ...
