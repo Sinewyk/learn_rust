@@ -1,3 +1,3 @@
-stopped just before: 5 structs
+stopped just before: 6 enums & pattern match
 
 just learning rust ...
