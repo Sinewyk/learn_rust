@@ -26,7 +26,7 @@ fn build_user(email: String, username: String) -> User {
     }
 }
 
-fn main() {
+fn do_stuff_with_user() {
     let mut user1 = build_user(String::from("foo"), String::from("foo@bar.com"));
 
     user1.username = String::from("bar");
@@ -38,4 +38,20 @@ fn main() {
     };
 
     println!("{}", user2);
+}
+
+fn main() {
+    // do_stuff_with_user();
+
+    let width1 = 30;
+    let height1 = 50;
+
+    println!(
+        "The area of the rectangle is {} square pixels",
+        area(width1, height1)
+    );
+}
+
+fn area(width: u32, height: u32) -> u32 {
+    width * height
 }
