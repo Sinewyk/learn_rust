@@ -1,3 +1,3 @@
-stopped just before: 6 enums & pattern match
+stopped just before: 7 packages, modules & stuff
 
 just learning rust ...
