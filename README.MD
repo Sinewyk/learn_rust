@@ -1,3 +1,3 @@
-stopped just before: 7 packages, modules & stuff
+stopped just after: 8.1 vectors
 
 just learning rust ...
