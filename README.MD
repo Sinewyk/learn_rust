@@ -1,3 +1,3 @@
-stopped just after: 8.1 vectors
+stopped just before: 9.0 error handling
 
 just learning rust ...
