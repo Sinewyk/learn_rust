@@ -1,5 +1,5 @@
-use std::fs::File;
-use std::io::ErrorKind;
+use std::fs::{self, File};
+use std::io::{Error, ErrorKind, Read};
 
 fn main() {
     match File::open("hello.txt") {
@@ -25,7 +25,19 @@ fn main() {
         }
     });
 
+    match read_username_from_file() {
+        Ok(s) => println!(
+            "stuff in hello.txt: {}",
+            if s == "" { "nothing inside :'(" } else { &s }
+        ),
+        Err(e) => panic!("error reading from file :'(, {:?}", e),
+    };
+
     cleanup();
+}
+
+fn read_username_from_file() -> Result<String, Error> {
+    fs::read_to_string("hello.txt")
 }
 
 fn cleanup() {

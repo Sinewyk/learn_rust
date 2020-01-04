@@ -1,3 +1,3 @@
-stopped just before: 9.0 error handling
+stopped just before: 10.0 generics
 
 just learning rust ...
