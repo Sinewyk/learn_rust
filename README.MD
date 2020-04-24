@@ -1,3 +1,3 @@
-stopped just before: 10.0 generics
+stopped in: 11.1 tests
 
 just learning rust ...
