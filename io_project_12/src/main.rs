@@ -8,13 +8,13 @@ fn main() {
 	let config = match Config::new(&args) {
 		Ok(c) => c,
 		Err(err) => {
-			println!("Problem parsing arguments: {}", err);
+			eprintln!("Problem parsing arguments: {}", err);
 			process::exit(1);
 		}
 	};
 
 	if let Err(e) = io_project_12::run(config) {
-		println!("Application error: {}", e);
+		eprintln!("Application error: {}", e);
 
 		process::exit(1);
 	};
