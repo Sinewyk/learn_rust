@@ -1,3 +1,4 @@
+use std::marker::PhantomData;
 use std::thread;
 use std::time::Duration;
 
@@ -30,26 +31,30 @@ fn generate_workout(intensity: u32, random_number: u32) {
 	}
 }
 
-struct Cacher<T>
+struct Cacher<T, U, V>
 where
-	T: Fn(u32) -> u32,
+	T: Fn(U) -> V,
+	V: Copy,
 {
 	calculation: T,
-	value: Option<u32>,
+	value: Option<V>,
+	phantom: PhantomData<U>,
 }
 
-impl<T> Cacher<T>
+impl<T, U, V> Cacher<T, U, V>
 where
-	T: Fn(u32) -> u32,
+	T: Fn(U) -> V,
+	V: Copy,
 {
-	fn new(calculation: T) -> Cacher<T> {
+	fn new(calculation: T) -> Cacher<T, U, V> {
 		Cacher {
 			calculation,
 			value: None,
+			phantom: PhantomData,
 		}
 	}
 
-	fn value(&mut self, arg: u32) -> u32 {
+	fn value(&mut self, arg: U) -> V {
 		match self.value {
 			Some(v) => v,
 			None => {
