@@ -1,4 +1,5 @@
-use std::marker::PhantomData;
+use std::collections::hash_map::HashMap;
+use std::hash::Hash;
 use std::thread;
 use std::time::Duration;
 
@@ -7,6 +8,13 @@ fn main() {
 	let simulated_random_number = 7;
 
 	generate_workout(simulated_user_specific_value, simulated_random_number);
+
+	let mut c = Cacher::new(|a| a);
+
+	let v1 = c.value(1);
+	let v2 = c.value(2);
+
+	assert_ne!(v1, v2);
 }
 
 fn generate_workout(intensity: u32, random_number: u32) {
@@ -34,32 +42,32 @@ fn generate_workout(intensity: u32, random_number: u32) {
 struct Cacher<T, U, V>
 where
 	T: Fn(U) -> V,
+	U: Eq + Hash + Copy,
 	V: Copy,
 {
 	calculation: T,
-	value: Option<V>,
-	phantom: PhantomData<U>,
+	map: HashMap<U, V>,
 }
 
 impl<T, U, V> Cacher<T, U, V>
 where
 	T: Fn(U) -> V,
+	U: Eq + Hash + Copy,
 	V: Copy,
 {
 	fn new(calculation: T) -> Cacher<T, U, V> {
 		Cacher {
 			calculation,
-			value: None,
-			phantom: PhantomData,
+			map: HashMap::new(),
 		}
 	}
 
 	fn value(&mut self, arg: U) -> V {
-		match self.value {
-			Some(v) => v,
+		match self.map.get(&arg) {
+			Some(v) => *v,
 			None => {
 				let v = (self.calculation)(arg);
-				self.value = Some(v);
+				self.map.insert(arg, v);
 				v
 			}
 		}
