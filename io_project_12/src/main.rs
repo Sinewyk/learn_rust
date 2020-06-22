@@ -3,13 +3,10 @@ use std::env;
 use std::process;
 
 fn main() {
-	let config = match Config::new(env::args()) {
-		Ok(c) => c,
-		Err(err) => {
-			eprintln!("Problem parsing arguments: {}", err);
-			process::exit(1);
-		}
-	};
+	let config = Config::new(env::args()).unwrap_or_else(|err| {
+		eprintln!("Problem parsing arguments: {}", err);
+		process::exit(1);
+	});
 
 	if let Err(e) = io_project_12::run(config) {
 		eprintln!("Application error: {}", e);
