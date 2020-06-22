@@ -3,9 +3,7 @@ use std::env;
 use std::process;
 
 fn main() {
-	let args: Vec<String> = env::args().collect();
-
-	let config = match Config::new(&args) {
+	let config = match Config::new(env::args()) {
 		Ok(c) => c,
 		Err(err) => {
 			eprintln!("Problem parsing arguments: {}", err);
