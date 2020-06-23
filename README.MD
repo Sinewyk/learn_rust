@@ -1,3 +1,3 @@
-stopped in: 11.3 tests orga
+stopped in: 15.0 start of points stuff
 
 just learning rust ...
