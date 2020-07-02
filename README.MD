@@ -1,3 +1,3 @@
-stopped in: 15.0 start of points stuff
+stopped in: 16.0 start of concurrency stuff
 
 just learning rust ...
