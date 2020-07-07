@@ -39,14 +39,13 @@ fn main() {
 		components: vec![Box::new(String::from("test"))],
 	}; */
 
-	let mut post = Post::new();
+	let mut draft = Post::new();
 
-	post.add_text("I ate a salad for lunch today");
-	assert_eq!("", post.content());
+	draft.add_text("I ate a salad for lunch today");
 
-	post.request_review();
-	assert_eq!("", post.content());
+	let post_in_review = draft.request_review();
 
-	post.approve();
+	let post = post_in_review.approve();
+
 	assert_eq!("I ate a salad for lunch today", post.content());
 }
