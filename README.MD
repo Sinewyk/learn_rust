@@ -1,3 +1,3 @@
-stopped in: 16.0 start of concurrency stuff
+stopped in: 18.0 patterns stuff
 
 just learning rust ...
