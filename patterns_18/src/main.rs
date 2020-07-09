@@ -1,3 +1,4 @@
+#[allow(unused_variables)]
 fn main() {
 	let x = Some(1);
 
@@ -100,6 +101,7 @@ fn handle_point_move((x, y): (i32, i32)) {
 	return ();
 }
 
+#[allow(dead_code)]
 enum Message {
 	Quit,
 	Move { x: i32, y: i32 },
