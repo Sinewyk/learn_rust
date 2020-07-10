@@ -1,3 +1,3 @@
-stopped in: 18.0 patterns stuff
+stopped in: 19.0 advanced stuff
 
 just learning rust ...
