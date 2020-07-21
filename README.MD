@@ -1,3 +1,3 @@
-stopped in: 19.0 advanced stuff
+stopped in: 20.0 final
 
 just learning rust ...
